@@ -101,6 +101,10 @@ class SyncElementContent extends BaseJob
             /** @var Element $siteElement */
             $siteElement = $elementsService->getElementById($sourceElement->id, get_class($sourceElement), $siteId);
 
+            // Sync the title and the slug from the source element
+            $siteElement->title = $sourceElement->title;
+            $siteElement->slug = $sourceElement->slug;
+
             foreach ($data as $key => $item) {
                 if ($key == 'fields') {
                     $siteElement->setFieldValues($item);
